@@ -4,7 +4,11 @@ class App extends Component {
   state = {};
 
   render() {
-    return <h1>Hello world!</h1>;
+    return (
+      <div className="container">
+        <div className="app"></div>
+      </div>
+    );
   }
 }
 

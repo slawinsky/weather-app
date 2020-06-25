@@ -1,5 +1,4 @@
-// colors
-$white: "#fff";
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
 
 // global config
 *,
@@ -11,16 +10,26 @@ $white: "#fff";
 }
 
 html,
-body {
+body,
+#root {
   height: 100%;
+  font-family: "Raleway", sans-serif;
 }
 
 .container {
   min-height: 100%;
 
-  background-image: url("./../assets/img/background.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("./../assets/img/background.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-position: center;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  color: #fff;
 }

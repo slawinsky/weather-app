@@ -1,0 +1,21 @@
+.current-weather {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 170px;
+
+  &__icon {
+    width: 5.7rem;
+  }
+
+  &__city {
+    font-weight: 700;
+    font-size: 1.9rem;
+  }
+
+  &__temperature {
+    font-weight: 900;
+    font-size: 3.2rem;
+  }
+}

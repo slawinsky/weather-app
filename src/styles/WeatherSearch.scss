@@ -1,0 +1,39 @@
+.weather-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+
+  &__txt {
+    font-size: 1.25rem;
+    font-weight: 400;
+    font-family: "Raleway", sans-serif;
+  }
+
+  &__icon {
+    margin-right: 0.25em;
+  }
+}
+
+.form {
+  display: flex;
+
+  &__input,
+  &__submit {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    color: #fff;
+    font-family: "Raleway", sans-serif;
+    font-size: 1rem;
+  }
+}

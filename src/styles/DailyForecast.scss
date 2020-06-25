@@ -1,0 +1,28 @@
+.daily-forecast {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 2em 1.5em;
+
+  &__day {
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    flex: 8;
+  }
+
+  &__temperature {
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    flex: 1;
+  }
+
+  &__icon {
+    width: 1.9rem;
+  }
+}
+
+.daily-forecast:last-child {
+  padding-bottom: 0;
+}

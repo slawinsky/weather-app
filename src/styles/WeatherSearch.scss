@@ -25,6 +25,9 @@
 
 .form {
   display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s linear, opacity 0.3s linear;
 
   &__input,
   &__submit {
@@ -40,4 +43,9 @@
   &__submit {
     cursor: pointer;
   }
+}
+
+.active {
+  visibility: visible;
+  opacity: 1;
 }

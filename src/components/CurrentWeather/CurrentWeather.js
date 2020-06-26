@@ -5,7 +5,7 @@ import WeatherSearch from "./../WeatherSearch/WeatherSearch";
 import "./../../styles/CurrentWeather.scss";
 
 const CurrentWeather = (props) => {
-  const { city, temp, icon } = props;
+  const { city, temp, icon, weatherSearch, locationChange } = props;
   return (
     <div className="current-weather">
       <img
@@ -13,8 +13,11 @@ const CurrentWeather = (props) => {
         src={`src/assets/img/${icon}.svg`}
       />
       <p className="current-weather__city">{city}</p>
-      <span className="current-weather__temperature">{temp}°C</span>
-      <WeatherSearch />
+      <span className="current-weather__temperature">{Math.floor(temp)}°C</span>
+      <WeatherSearch
+        weatherSearch={weatherSearch}
+        locationChange={locationChange}
+      />
     </div>
   );
 };

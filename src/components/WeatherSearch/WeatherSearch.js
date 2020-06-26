@@ -21,11 +21,18 @@ class WeatherSearch extends Component {
           <span className="btn__txt">change location</span>
         </button>
         <form
+          onSubmit={this.props.weatherSearch}
           className={`weather-search__form form ${
             this.state.isActive ? "active" : null
           }`}
         >
-          <input type="text" className="form__input" />
+          <input
+            onChange={this.props.locationChange}
+            value={this.props.location}
+            type="text"
+            className="form__input"
+            required
+          />
           <input type="submit" value="ok" className="form__submit" />
         </form>
       </div>

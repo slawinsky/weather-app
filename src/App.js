@@ -11,10 +11,26 @@ class App extends Component {
     data: null,
     isLoading: true,
     error: null,
+    location: "",
   };
 
-  componentDidMount() {
-    fetch(API)
+  handleWeatherSearch = (e) => {
+    e.preventDefault();
+    this.handleDataFetch(
+      `https://api.weatherbit.io/v2.0/forecast/daily?city=${this.state.location}&key=${KEY}`
+    );
+  };
+
+  handleLocationChange = (e) => {
+    this.setState({
+      location: e.target.value,
+    });
+  };
+
+  handleDataFetch = (api) => {
+    this.setState({ isLoading: true });
+
+    fetch(api)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -24,6 +40,10 @@ class App extends Component {
       })
       .then((data) => this.setState({ data, isLoading: false }))
       .catch((error) => this.setState({ error, isLoading: false }));
+  };
+
+  componentDidMount() {
+    this.handleDataFetch(API);
   }
 
   render() {
@@ -38,6 +58,8 @@ class App extends Component {
     }
 
     if (!isLoading) {
+      console.log(this.state.location);
+
       const currentWeather = data.data[0];
 
       // make array of 4 next days forecast
@@ -60,6 +82,9 @@ class App extends Component {
                 city={data.city_name}
                 temp={currentWeather.temp}
                 icon={currentWeather.weather.icon}
+                weatherSearch={this.handleWeatherSearch}
+                locationChange={this.handleLocationChange}
+                location={this.state.location}
               />
             </div>
             <div className="app__bottom">{Forecast}</div>

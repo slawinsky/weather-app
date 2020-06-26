@@ -21,6 +21,31 @@
   &__icon {
     width: 1.9rem;
   }
+
+  @media (min-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+    min-height: 175px;
+
+    padding: 0 2em;
+
+    &__day {
+      font-size: 1.9rem;
+      flex: 0;
+    }
+
+    &__temperature {
+      font-size: 2rem;
+      font-weight: 900;
+      order: 1;
+      flex: 0;
+    }
+
+    &__icon {
+      width: 6.25rem;
+      flex: 0;
+    }
+  }
 }
 
 .daily-forecast:last-child {

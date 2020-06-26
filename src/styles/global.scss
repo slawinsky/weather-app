@@ -52,4 +52,15 @@ body,
 
     flex-direction: column;
   }
+
+  @media (min-width: 900px) {
+    &__top {
+      flex: 1;
+    }
+
+    &__bottom {
+      flex-direction: row;
+      flex: 1;
+    }
+  }
 }

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
 import DailyForecast from "./components/DailyForecast/DailyForecast";
+import Loading from "./components/Loading/Loading";
+import Error from "./components/Error/Error";
 
 const KEY = "d8d7e500ca004d009e81a0cd419894d0";
 const API = `https://api.weatherbit.io/v2.0/forecast/daily?city=Warsaw&key=${KEY}`;
@@ -30,16 +32,18 @@ class App extends Component {
   handleDataFetch = (api) => {
     this.setState({ isLoading: true });
 
-    fetch(api)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Something went wrong...");
-        }
-      })
-      .then((data) => this.setState({ data, isLoading: false }))
-      .catch((error) => this.setState({ error, isLoading: false }));
+    setTimeout(() => {
+      fetch(api)
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error("Something went wrong...");
+          }
+        })
+        .then((data) => this.setState({ data, isLoading: false }))
+        .catch((error) => this.setState({ error, isLoading: false }));
+    }, 3000);
   };
 
   componentDidMount() {
@@ -50,11 +54,19 @@ class App extends Component {
     const { isLoading, error, data } = this.state;
 
     if (isLoading) {
-      return <p>loading</p>;
+      return (
+        <div className="container">
+          <Loading />
+        </div>
+      );
     }
 
     if (error) {
-      return <p>{error.message}</p>;
+      return (
+        <div className="container">
+          <Error message={error.message} />
+        </div>
+      );
     }
 
     if (!isLoading) {

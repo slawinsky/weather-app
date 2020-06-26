@@ -43,7 +43,7 @@ class App extends Component {
         })
         .then((data) => this.setState({ data, isLoading: false }))
         .catch((error) => this.setState({ error, isLoading: false }));
-    }, 3000);
+    }, 2000);
   };
 
   componentDidMount() {
@@ -70,13 +70,12 @@ class App extends Component {
     }
 
     if (!isLoading) {
-      console.log(this.state.location);
+      const { handleWeatherSearch, handleLocationChange } = this;
+      const { location } = this.state;
 
       const currentWeather = data.data[0];
-
       // make array of 4 next days forecast
       const dailyForecast = data.data.slice(1, 5);
-
       const Forecast = dailyForecast.map((day) => (
         <DailyForecast
           date={day.datetime}
@@ -94,9 +93,9 @@ class App extends Component {
                 city={data.city_name}
                 temp={currentWeather.temp}
                 icon={currentWeather.weather.icon}
-                weatherSearch={this.handleWeatherSearch}
-                locationChange={this.handleLocationChange}
-                location={this.state.location}
+                weatherSearch={handleWeatherSearch}
+                locationChange={handleLocationChange}
+                location={location}
               />
             </div>
             <div className="app__bottom">{Forecast}</div>

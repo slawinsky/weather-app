@@ -14,6 +14,8 @@ class WeatherSearch extends Component {
   };
 
   render() {
+    const { locationChange, weatherSearch, location } = this.props;
+
     return (
       <div className="weather-search">
         <button className="weather-search__btn btn" onClick={this.handleClick}>
@@ -21,14 +23,14 @@ class WeatherSearch extends Component {
           <span className="btn__txt">change location</span>
         </button>
         <form
-          onSubmit={this.props.weatherSearch}
+          onSubmit={weatherSearch}
           className={`weather-search__form form ${
             this.state.isActive ? "active" : null
           }`}
         >
           <input
-            onChange={this.props.locationChange}
-            value={this.props.location}
+            onChange={locationChange}
+            value={location}
             type="text"
             className="form__input"
             required

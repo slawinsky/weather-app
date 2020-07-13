@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./../../styles/Error.scss";
+import "./Error.scss";
 
 import WeatherSearch from "./../WeatherSearch/WeatherSearch";
 

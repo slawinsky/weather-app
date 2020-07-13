@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./../../styles/DailyForecast.scss";
+import "./DailyForecast.scss";
 
 const DailyForecast = (props) => {
   const { date, temp, icon } = props;

@@ -2,10 +2,15 @@ import React from "react";
 
 import WeatherSearch from "./../WeatherSearch/WeatherSearch";
 
-import "./../../styles/CurrentWeather.scss";
+import "./CurrentWeather.scss";
 
-const CurrentWeather = (props) => {
-  const { city, temp, icon, weatherSearch, locationChange } = props;
+const CurrentWeather = ({
+  city,
+  temp,
+  icon,
+  weatherSearch,
+  locationChange,
+}) => {
   return (
     <div className="current-weather">
       <img

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import "./../../styles/WeatherSearch.scss";
+import "./WeatherSearch.scss";
 
 class WeatherSearch extends Component {
   state = {

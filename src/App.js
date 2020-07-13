@@ -6,7 +6,6 @@ import Loading from "./components/Loading/Loading";
 import Error from "./components/Error/Error";
 
 const KEY = "d8d7e500ca004d009e81a0cd419894d0";
-const API = `https://api.weatherbit.io/v2.0/forecast/daily?city=Warsaw&key=${KEY}`;
 
 class App extends Component {
   state = {
@@ -47,7 +46,9 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.handleDataFetch(API);
+    this.handleDataFetch(
+      `https://api.weatherbit.io/v2.0/forecast/daily?city=Warsaw&key=${KEY}`
+    );
   }
 
   render() {
@@ -69,40 +70,38 @@ class App extends Component {
       );
     }
 
-    if (!isLoading) {
-      const { handleWeatherSearch, handleLocationChange } = this;
-      const { location } = this.state;
+    const { handleWeatherSearch, handleLocationChange } = this;
+    const { location } = this.state;
 
-      const currentWeather = data.data[0];
-      // make array of 4 next days forecast
-      const dailyForecast = data.data.slice(1, 5);
-      const Forecast = dailyForecast.map((day) => (
-        <DailyForecast
-          date={day.datetime}
-          temp={day.temp}
-          icon={day.weather.icon}
-        />
-      ));
+    const currentWeather = data.data[0];
+    // make array of 4 next days forecast
+    const dailyForecast = data.data.slice(1, 5);
+    const Forecast = dailyForecast.map((day) => (
+      <DailyForecast
+        date={day.datetime}
+        temp={day.temp}
+        icon={day.weather.icon}
+      />
+    ));
 
-      return (
-        <div className="container">
-          <div className="app">
-            <div className="app__top">
-              <CurrentWeather
-                key={data.valid_date}
-                city={data.city_name}
-                temp={currentWeather.temp}
-                icon={currentWeather.weather.icon}
-                weatherSearch={handleWeatherSearch}
-                locationChange={handleLocationChange}
-                location={location}
-              />
-            </div>
-            <div className="app__bottom">{Forecast}</div>
+    return (
+      <div className="container">
+        <div className="app">
+          <div className="app__top">
+            <CurrentWeather
+              key={data.valid_date}
+              city={data.city_name}
+              temp={currentWeather.temp}
+              icon={currentWeather.weather.icon}
+              weatherSearch={handleWeatherSearch}
+              locationChange={handleLocationChange}
+              location={location}
+            />
           </div>
+          <div className="app__bottom">{Forecast}</div>
         </div>
-      );
-    }
+      </div>
+    );
   }
 }
 
